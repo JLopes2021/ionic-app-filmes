@@ -23,15 +23,4 @@ Este é um trabalho para composição de Menção na Matéria de Programação M
 <a href="https://ionicframework.com/docs" style="text decoration: 'no'"> IONIC Framework</a>
 <img src="https://img2.gratispng.com/20181126/aaz/kisspng-ionic-apache-cordova-software-framework-mobile-app-5bfc36aa6e20c6.7150215215432557224511.jpg" alt="html5" width="40" height="40"/>
 
-###
 
-## Dicas de Produção
-- Colocar um slide de imagens passando, ao abrir o site. Com descrição sobre a horta, legumes, verduras e frutas que podem ser plantadas em casa facilmente. (instigando o leitor a criar sua horta);
-
-###
-
-## Atualizações
-
-- Já existe uma tela simples inicial que se liga na tela de detalhes sobre  um possivel curso de Administração
-
-###
