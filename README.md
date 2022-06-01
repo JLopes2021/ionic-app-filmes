@@ -1,5 +1,5 @@
 # ionic-app-filmes
-Trabalho para composição de Menção na matéria de MobileII no Curso de Técnico em Desenvolvimento de Sistemas
+Trabalho para composição de Menção na matéria de Mobile II no Curso de Técnico em Desenvolvimento de Sistemas
 <p align="center">
 Este é um trabalho para composição de Menção na Matéria de Programação Mobile II, na ETEC Albert Einstein.
 </p>
