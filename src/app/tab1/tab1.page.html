@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Filmes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list *ngIf="listaFilmes">
+
+    <ion-item-sliding *ngFor="let filme of listaFilmes">
+      <ion-item lines="full" (click)="exibirFilme(filme)">
+
+        <ion-thumbnail slot="start">
+          <img *ngIf="filme.cartaz" src="{{filme.cartaz}}" />
+          <ion-icon *ngIf="!filme.cartaz" name="videocam-off"></ion-icon>
+        </ion-thumbnail>
+
+        <ion-label class="ion-text-wrap">
+          <div>
+            <h1>{{filme.nome}}</h1>
+            <p>{{filme.lancamento}}</p>
+            <ion-badge color="medium" *ngFor="let genero of filme.generos">
+              {{genero}}
+            </ion-badge>
+            <ion-icon name="star" [color]="filme.favorito===true ? 'warning' : ('light')"></ion-icon>
+          </div>
+        </ion-label>
+
+        <ion-chip [color]="filme.classificacao < 5 ? 'danger' : ((filme.classificacao < 7 ? 'warning' : 'success'))"
+          outline>
+          <ion-label>{{filme.classificacao}}</ion-label>
+        </ion-chip>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="exibirAlertaFavorito(filme)">
+          <ion-icon slot="icon-only" name="star"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

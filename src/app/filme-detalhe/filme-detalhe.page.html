@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{filme.nome}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <ion-card *ngIf="filme">
+    <ion-card-header>
+      <img *ngIf="filme.cartaz" src="{{filme.cartaz}}" />
+      <ion-icon *ngIf="!filme.cartaz" name="videocam-off"></ion-icon>
+    </ion-card-header>
+
+    <ion-card-content>
+      <h1>{{filme.nome}} <ion-icon name="star" [color]="filme.favorito===true ? 'warning' : ('light')"></ion-icon></h1>
+      <p>{{filme.lancamento}}
+        <ion-chip [color]="filme.classificacao < 5 ? 'danger' : ((filme.classificacao < 7 ? 'warning' : 'success'))"
+          outline>
+          <ion-label>{{filme.classificacao}}</ion-label>
+        </ion-chip>
+      </p>
+    </ion-card-content>
+    <ion-item>
+      <ion-badge color="medium" *ngFor="let genero of filme.generos">{{genero}}</ion-badge>
+    </ion-item>
+  </ion-card>
+</ion-content>
