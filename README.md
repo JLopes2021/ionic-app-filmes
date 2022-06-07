@@ -5,7 +5,7 @@ Este é um trabalho para composição de Menção na Matéria de Programação M
 </p>
 
 <h4 align="center"> 
-	🚧  Projeto App Filmes 🚀 Em construção...  🚧 Para Composição de Menção
+	🚧  Projeto App Filmes Completo 🚧 Para Composição de Menção
 </h4>
 
 
