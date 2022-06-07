@@ -24,6 +24,7 @@ export interface IAtores{
   foto: string;
   idade: number;
   filmes: string[];
+  series: string[];
   favorito: boolean;
 
 }

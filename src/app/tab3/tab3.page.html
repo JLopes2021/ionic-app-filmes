@@ -11,7 +11,7 @@
   <ion-list *ngIf="listaAtores">
 
     <ion-item-sliding *ngFor="let ator of listaAtores">
-      <ion-item lines="full" (click)="exibirFilme(ator)">
+      <ion-item >
 
         <ion-thumbnail slot="start">
           <img *ngIf="ator.foto" src="{{ator.foto}}" />
@@ -21,18 +21,16 @@
         <ion-label class="ion-text-wrap">
           <div>
             <h1>{{ator.nome}}</h1>
-            <p>{{ator.idade}}</p>
-            <ion-badge color="medium" *ngFor="let filme of ator.filmes">
-              {{filme}}
+            <p>{{ator.idade + ' Anos'}}</p>
+            <ion-label color="light" *ngFor="let filme of ator.filmes">
+              <p class="p-filme">{{filme}}</p><hr>
+            </ion-label>
+
+            <ion-badge color="medium" *ngFor="let serie of ator.series">
+             <p class="p-serie">{{serie}}</p>
             </ion-badge>
-            <ion-icon name="star" [color]="ator.favorito===true ? 'warning' : ('light')"></ion-icon>
           </div>
         </ion-label>
-
-        <ion-chip [color]="ator.idade < 5 ? 'danger' : ((ator.idade < 7 ? 'warning' : 'success'))"
-          outline>
-          <ion-label>{{ator.idade}}</ion-label>
-        </ion-chip>
       </ion-item>
 
       <ion-item-options side="end">

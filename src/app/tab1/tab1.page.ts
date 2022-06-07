@@ -1,3 +1,4 @@
+import { ICartaz } from './../model/IFilme';
 import { FilmeDetalhePage } from './../filme-detalhe/filme-detalhe.page';
 import { NavigationExtras, Router } from '@angular/router';
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -12,9 +13,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 })
 export class Tab1Page {
 
-  constructor(public router: Router,
-                    public alertController: AlertController,
-                    public toastController: ToastController) {}
+  constructor(public router: Router, public alertController: AlertController, public toastController: ToastController) {}
 
   listaFilmes: IFilme[] = [
     {
@@ -41,7 +40,7 @@ export class Tab1Page {
       nome: 'Massacre no Bairro Japonês (1991)',
       lancamento: '23/08/1991 (US)',
       duracao: '1h19m',
-      classificacao: 6.3,
+      classificacao: 6,
       cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vgiGW7F1VVue9EAOR70gJwHecLj.jpg',
       generos: ['Ação'],
       pagina: '/massacre-japones',
@@ -51,7 +50,7 @@ export class Tab1Page {
       nome: 'O Poderoso Chefão (1972)',
       lancamento: '07/07/1972',
       duracao: '2h55m',
-      classificacao: 8.7,
+      classificacao: 8,
       cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oJagOzBu9Rdd9BrciseCm3U3MCU.jpg',
       generos: ['Drama', 'Crime'],
       pagina: '/godfather1',
@@ -61,16 +60,46 @@ export class Tab1Page {
       nome: 'Vende-se Esta Casa (2018)',
       lancamento: '19/01/2018 (BR)',
       duracao: '1h34m',
-      classificacao: 3.7,
+      classificacao: 3,
       cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tAcsTHfzYwxe0QkarzHqNfnqvxa.jpg',
       generos: ['Terror', 'Thriller'],
       pagina: '/vende-casa',
       favorito: false
     }
   ];
+
+  async somar(filme: IFilme) {
+    const alert = await this.alertController.create({
+
+      header: 'Deseja votar?',
+      message: '',
+      buttons: [
+        {
+          text: 'Avaliar Negativamente',
+          role: 'cancel',
+          handler: () => {
+            filme.classificacao--;
+          }
+        }, {
+          text: 'Avaliar, Positivamente.',
+          handler: () => {
+            filme.classificacao++;
+            this.apresentarToast();
+          }
+        },
+        {
+          text: 'Não quero avaliar'
+        }
+      ]
+    });
+    console.log('alerta favorito');
+    await alert.present();
+  }
+
   exibirFilme(filme: IFilme){
     const navigationExtras: NavigationExtras = {state:{paramFilme:filme}};
     this.router.navigate(['filme-detalhe'],navigationExtras);
+    console.log('Exibe o filme');
   }
 
   async exibirAlertaFavorito(filme: IFilme) {
@@ -94,6 +123,7 @@ export class Tab1Page {
         }
       ]
     });
+    console.log('alerta favorito');
     await alert.present();
   }
 

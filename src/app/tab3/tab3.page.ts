@@ -22,6 +22,23 @@ export class Tab3Page {
   foto: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2qhIDp44cAqP2clOgt2afQI07X8.jpg',
   idade: 26,
   filmes: ['Homem Aranha'],
+  series: ['Sem séries'],
+  favorito: false,
+},
+{
+  nome: 'Marlon Brando',
+  foto: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fuTEPMsBtV1zE98ujPONbKiYDc2.jpg',
+  idade: 76,
+  filmes: ['O Poderoso Chefão'],
+  series: ['Sem séries'],
+  favorito: false,
+},
+{
+  nome: 'Terceiro Ator',
+  foto: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2qhIDp44cAqP2clOgt2afQI07X8.jpg',
+  idade: 26,
+  filmes: ['Homem Aranha'],
+  series: ['Sem séries'],
   favorito: false,
 }
   ];

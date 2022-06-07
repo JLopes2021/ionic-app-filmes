@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { IFilme } from './../model/IFilme';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AlertController, ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-filme-detalhe',
@@ -11,7 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FilmeDetalhePage implements OnInit {
   filme: any;
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, public alertController: AlertController,
+    public toastController: ToastController) {
 
   }
 
@@ -23,4 +26,6 @@ export class FilmeDetalhePage implements OnInit {
       }
     });
   }
+  //Começar aqui
+
 }

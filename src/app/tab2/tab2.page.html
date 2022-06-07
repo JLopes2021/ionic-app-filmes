@@ -25,7 +25,7 @@
             <ion-badge color="medium" *ngFor="let genero of serie.generos">
               {{genero}}
             </ion-badge>
-            <ion-icon name="star" [color]="serie.favorito===true ? 'warning' : ('light')"></ion-icon>
+            <ion-icon name="star" (click)="exibirAlertaFavorito(filme)" [color]="serie.favorito===true ? 'warning' : ('light')"></ion-icon>
           </div>
         </ion-label>
 
