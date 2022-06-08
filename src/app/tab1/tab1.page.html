@@ -1,47 +1,49 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+  <ion-toolbar >
     <ion-title>
       Filmes
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content color="tertiary" [fullscreen]="true">
 
-  <ion-list *ngIf="listaFilmes">
+    <ion-list *ngIf="listaFilmes">
 
-    <ion-item-sliding *ngFor="let filme of listaFilmes">
-      <ion-item lines="full" (click)="exibirFilme(filme)">
+      <ion-item-sliding *ngFor="let filme of listaFilmes">
+        <ion-item color="tertiary" lines="full" (click)="exibirFilme(filme)">
 
-        <ion-thumbnail slot="start">
-          <div class="foto">
-            <img *ngIf="filme.cartaz" src="{{filme.cartaz}}" />
-          </div>
-          <ion-icon *ngIf="!filme.cartaz" name="videocam-off"></ion-icon>
-        </ion-thumbnail>
+          <ion-thumbnail  slot="start">
+            <div class="foto">
+              <img *ngIf="filme.cartaz" src="{{filme.cartaz}}" />
+            </div>
+            <ion-icon  *ngIf="!filme.cartaz" name="videocam-off"></ion-icon>
+          </ion-thumbnail>
 
-        <ion-label class="ion-text-wrap">
-          <div class="container-fluid">
-            <h1 class="titulo">{{filme.nome}}</h1>
-            <p class="ano-lancamento">{{filme.lancamento}}</p>
-            <ion-badge color="medium" *ngFor="let genero of filme.generos">
-              {{genero}}
-            </ion-badge>
-            <ion-icon name="star" [color]="filme.favorito===true ? 'warning' : ('light')"></ion-icon>
-          </div>
-        </ion-label>
+          <ion-label class="ion-text-wrap">
+            <div class="container-fluid">
+              <h1 class="titulo">{{filme.nome}}</h1>
+              <p class="ano-lancamento">{{filme.lancamento}}</p>
+              <ion-badge color="primary" *ngFor="let genero of filme.generos">
+                {{genero}}
+              </ion-badge>
+              <ion-icon  name="star" [color]="filme.favorito===true ? 'warning' : ('light')"></ion-icon>
+            </div>
+          </ion-label>
 
-        <ion-chip (click)="somar(filme)" [color]="filme.classificacao < 5 ? 'danger' : ((filme.classificacao < 7 ? 'warning' : 'success'))"
-          outline>
-          <ion-label>{{filme.classificacao}}</ion-label>
-        </ion-chip>
-      </ion-item>
+          <ion-chip (click)="somar(filme)" [color]="filme.classificacao < 5 ? 'danger' : ((filme.classificacao < 7 ? 'warning' : 'success'))" outline >
+            <ion-label>{{filme.classificacao}}</ion-label>
+          </ion-chip>
+        </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="primary" (click)="exibirAlertaFavorito(filme)">
-          <ion-icon slot="icon-only" name="star"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
-</ion-content>
+          <ion-item-options  side="end">
+            <ion-item-option color="primary" (click)="exibirAlertaFavorito(filme)">
+              <ion-icon slot="icon-only" name="star"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+
+      </ion-item-sliding>
+    </ion-list>
+  </ion-content>
+
+

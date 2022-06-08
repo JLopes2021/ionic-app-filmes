@@ -6,12 +6,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="dark-contrast" [fullscreen]="true">
+<ion-content color="tertiary"  [fullscreen]="true">
 
   <ion-list *ngIf="listaSeries">
 
     <ion-item-sliding *ngFor="let filme of listaSeries">
-      <ion-item lines="full" (click)="exibirFilme(filme)">
+      <ion-item  color="tertiary" lines="full" (click)="exibirFilme(filme)">
 
         <ion-thumbnail slot="start">
           <div class="foto">
@@ -24,7 +24,7 @@
           <div class="container-fluid">
             <h1 class="titulo">{{filme.nome}}</h1>
             <p class="ano-lancamento">{{filme.lancamento}}</p>
-            <ion-badge color="medium" *ngFor="let genero of filme.generos">
+            <ion-badge color="primary" *ngFor="let genero of filme.generos">
               {{genero}}
             </ion-badge>
             <ion-icon name="star" [color]="filme.favorito===true ? 'warning' : ('light')"></ion-icon>
