@@ -1,5 +1,4 @@
 import { ICartaz } from './../model/IFilme';
-import { FilmeDetalhePage } from './../filme-detalhe/filme-detalhe.page';
 import { NavigationExtras, Router } from '@angular/router';
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Component } from '@angular/core';
@@ -59,6 +58,33 @@ export class Tab2Page {
     }
   ];
 
+  async somar(filme: ICartaz) {
+    const alert = await this.alertController.create({
+
+      header: 'Deseja votar?',
+      message: '',
+      buttons: [
+        {
+          text: 'Avaliar Negativamente',
+          role: 'cancel',
+          handler: () => {
+            filme.classificacao--;
+          }
+        }, {
+          text: 'Avaliar, Positivamente.',
+          handler: () => {
+            filme.classificacao++;
+            this.apresentarToast();
+          }
+        },
+        {
+          text: 'Não quero avaliar'
+        }
+      ]
+    });
+    console.log('alerta favorito');
+    await alert.present();
+  }
 
   exibirFilme(filme: ICartaz){
     const navigationExtras: NavigationExtras = {state:{paramFilme:filme}};
@@ -75,12 +101,12 @@ export class Tab2Page {
           text: 'Não',
           role: 'cancel',
           handler: () => {
-            filme.classificacao--;
+            filme.favorito = false;
           }
         }, {
           text: 'Sim, favoritar.',
           handler: () => {
-            filme.classificacao++;
+            filme.favorito = true;
             this.apresentarToast();
           }
         }

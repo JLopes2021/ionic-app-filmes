@@ -1,5 +1,3 @@
-import { ICartaz } from './../model/IFilme';
-import { FilmeDetalhePage } from './../filme-detalhe/filme-detalhe.page';
 import { NavigationExtras, Router } from '@angular/router';
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Component } from '@angular/core';
@@ -21,6 +19,7 @@ export class Tab1Page {
       lancamento: '15/04/2021',
       duracao: '1h50m',
       classificacao: 9,
+      descricao: 'Não quero por nada',
       cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/w8BVC3qrCWCiTHRz4Rft12dtQF0.jpg',
       generos: ['Ação', 'Fantasia', 'Aventura'],
       pagina: '/mortal-kombat',
@@ -127,6 +126,30 @@ export class Tab1Page {
     await alert.present();
   }
 
+  async exibirAlertaClique(filme: IFilme) {
+    const alert = await this.alertController.create({
+
+      header: 'Meus Favoritos',
+      message: 'Deseja realmente favoritar o filme?',
+      buttons: [
+        {
+          text: 'Não',
+          role: 'cancel',
+          handler: () => {
+            filme.favorito=false;
+          }
+        }, {
+          text: 'Sim, favoritar.',
+          handler: () => {
+            filme.favorito=true;
+            this.apresentarToast();
+          }
+        }
+      ]
+    });
+    console.log('alerta favorito');
+    await alert.present();
+  }
   async apresentarToast() {
     const toast = await this.toastController.create({
       message: 'Filme adicionado aos favoritos...',
@@ -136,4 +159,6 @@ export class Tab1Page {
     });
     toast.present();
   }
+
+
 }

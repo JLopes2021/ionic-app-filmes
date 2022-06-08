@@ -6,6 +6,7 @@ export interface IFilme{
   classificacao: number;
   cartaz: string;
   generos: string[];
+  descricao?: string;
   pagina?: string; //** a ? indica que o campo nao é obrigatorio*/
   favorito: boolean;
 }
@@ -16,13 +17,16 @@ export interface ICartaz{
   classificacao: number;
   cartaz: string;
   generos: string[];
+  descricao?: string;
   pagina?: string; //** a ? indica que o campo nao é obrigatorio*/
   favorito: boolean;
 }
 export interface IAtores{
   nome: string;
-  foto: string;
+  cartaz: string;
   idade: number;
+  classificacao: number;
+  descricao?: string;
   filmes: string[];
   series: string[];
   favorito: boolean;

@@ -1,42 +1,44 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>
-     Séries
+  <ion-toolbar>
+    <ion-title class="titulo-inicial">
+      Filmes
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content color="dark-contrast" [fullscreen]="true">
 
   <ion-list *ngIf="listaSeries">
 
-    <ion-item-sliding *ngFor="let serie of listaSeries">
-      <ion-item lines="full" (click)="exibirFilme(serie)">
+    <ion-item-sliding *ngFor="let filme of listaSeries">
+      <ion-item lines="full" (click)="exibirFilme(filme)">
 
         <ion-thumbnail slot="start">
-          <img *ngIf="serie.cartaz" src="{{serie.cartaz}}" />
-          <ion-icon *ngIf="!serie.cartaz" name="videocam-off"></ion-icon>
+          <div class="foto">
+            <img *ngIf="filme.cartaz" src="{{filme.cartaz}}" />
+          </div>
+          <ion-icon *ngIf="!filme.cartaz" name="videocam-off"></ion-icon>
         </ion-thumbnail>
 
         <ion-label class="ion-text-wrap">
-          <div>
-            <h1>{{serie.nome}}</h1>
-            <p>{{serie.lancamento}}</p>
-            <ion-badge color="medium" *ngFor="let genero of serie.generos">
+          <div class="container-fluid">
+            <h1 class="titulo">{{filme.nome}}</h1>
+            <p class="ano-lancamento">{{filme.lancamento}}</p>
+            <ion-badge color="medium" *ngFor="let genero of filme.generos">
               {{genero}}
             </ion-badge>
-            <ion-icon name="star" (click)="exibirAlertaFavorito(filme)" [color]="serie.favorito===true ? 'warning' : ('light')"></ion-icon>
+            <ion-icon name="star" [color]="filme.favorito===true ? 'warning' : ('light')"></ion-icon>
           </div>
         </ion-label>
 
-        <ion-chip [color]="serie.classificacao < 5 ? 'danger' : ((serie.classificacao < 7 ? 'warning' : 'success'))"
+        <ion-chip  (click)="somar(filme)" [color]="filme.classificacao < 5 ? 'danger' : ((filme.classificacao < 7 ? 'warning' : 'success'))"
           outline>
-          <ion-label>{{serie.classificacao}}</ion-label>
+          <ion-label>{{filme.classificacao}}</ion-label>
         </ion-chip>
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="primary" (click)="exibirAlertaFavorito(serie)">
+        <ion-item-option color="primary" (click)="exibirAlertaFavorito(filme)">
           <ion-icon slot="icon-only" name="star"></ion-icon>
         </ion-item-option>
       </ion-item-options>

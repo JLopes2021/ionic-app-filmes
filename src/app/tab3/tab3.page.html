@@ -11,17 +11,19 @@
   <ion-list *ngIf="listaAtores">
 
     <ion-item-sliding *ngFor="let ator of listaAtores">
-      <ion-item >
+      <ion-item lines="full" (click)="exibirFilme(ator)">
 
         <ion-thumbnail slot="start">
-          <img *ngIf="ator.foto" src="{{ator.foto}}" />
-          <ion-icon *ngIf="!ator.foto" name="videocam-off"></ion-icon>
+          <div class="foto">
+            <img *ngIf="ator.cartaz" src="{{ator.cartaz}}" />
+          </div>
+          <ion-icon *ngIf="!ator.cartaz" name="videocam-off"></ion-icon>
         </ion-thumbnail>
 
         <ion-label class="ion-text-wrap">
           <div>
-            <h1>{{ator.nome}}</h1>
-            <p>{{ator.idade + ' Anos'}}</p>
+            <h1 class="titulo">{{ator.nome}}</h1>
+            <p class="ano-lancamento">{{ator.idade + ' Anos'}}</p>
             <ion-label color="light" *ngFor="let filme of ator.filmes">
               <p class="p-filme">{{filme}}</p><hr>
             </ion-label>
@@ -31,7 +33,13 @@
             </ion-badge>
           </div>
         </ion-label>
+        <ion-chip  (click)="somar(ator)" [color]="ator.classificacao < 5 ? 'danger' : ((ator.classificacao < 7 ? 'warning' : 'success'))"
+        outline>
+        <ion-label>{{ator.classificacao}}</ion-label>
+      </ion-chip>
       </ion-item>
+
+
 
       <ion-item-options side="end">
         <ion-item-option color="primary" (click)="exibirAlertaFavorito(ator)">
@@ -41,3 +49,4 @@
     </ion-item-sliding>
   </ion-list>
 </ion-content>
+
