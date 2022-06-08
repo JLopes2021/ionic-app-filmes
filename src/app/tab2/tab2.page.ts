@@ -50,7 +50,7 @@ nome: 'Brooklyn Nine-Nine(2013)',
 lancamento: '17/09/2013',
 duracao:'8 Temporadas',
 classificacao: 6,
-cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/f496cm9enuEsZkSPzCwnTESEK5s.jpg',
+cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wd5JwnNOqEDIKZ672wjEo8hzL7k.jpg',
 generos:['Comédia','Sitcom', 'Policial'],
 pagina:'/B99',
 favorito: false
@@ -64,7 +64,49 @@ cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/49WJfeN0moxb9IPfGn8A
 generos:['Drama Adolescente','Ficcção Cientifica', 'Terror', 'Suspense'],
 pagina:'/stranger-things',
 favorito: false
-}
+},
+{
+  nome: 'The Walking Dead(2010)',
+  lancamento: '31/10/2010',
+  duracao:'11 Temporadas',
+  classificacao: 6,
+  cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rqeYMLryjcawh2JeRpCVUDXYM5b.jpg',
+  generos:['Terror','Ficcção Pós-apocalíptica', 'Apocalipse Zumbi', 'Suspense'],
+  pagina:'/TWD',
+  favorito: false
+},
+{
+  nome: 'The100(2014)',
+  lancamento: '19/03/2014',
+  duracao:'7 Temporadas',
+  classificacao: 9,
+  cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/cfhfcEt4bOXuVZkTC0nNBpqqiWb.jpg',
+  // eslint-disable-next-line max-len
+  generos:['Distopia','Ficcção Cientifica', 'Ação', 'Drama', 'Ficção pós-apocalíptica','Aventura','Mistério', 'Ficcção Utópica e Distópica'],
+  pagina:'/the100',
+  favorito: false
+  },
+  {
+    nome: 'Riverdale(2017)',
+    lancamento: '26/01/2017',
+    duracao:'5 Temporadas',
+    classificacao: 9,
+    cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6zBWSuYW3Ps1nTfeMS8siS4KUaA.jpg',
+    generos:['Drama','Mistério', 'Crime Fiction'],
+    pagina:'/Riverdale',
+    favorito: false
+    },
+    {
+      nome: 'Shadowhunters(2019)',
+      lancamento: '06/05/2019',
+      duracao:'3 Temporadas',
+      classificacao: 9,
+      cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/66YHvvVduC21xcMXPpBBF0ywyVZ.jpg',
+      generos:['Drama','Ação', 'Sobrenatural','Terror'],
+      pagina:'/Shadowhunters',
+      favorito: false
+      }
+
 ];
 exibirFilme(filme: ISeries){
 const navigationExtras: NavigationExtras = {state:{paramFilme:filme}};
