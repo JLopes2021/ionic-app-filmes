@@ -1,10 +1,7 @@
-import { ICartaz } from './../model/IFilme';
-import { FilmeDetalhePage } from './../filme-detalhe/filme-detalhe.page';
-import { NavigationExtras, Router } from '@angular/router';
-/* eslint-disable @typescript-eslint/member-ordering */
 import { Component } from '@angular/core';
+import { ISeries } from '../model/IFilme';
 import { AlertController, ToastController } from '@ionic/angular';
-
+import { NavigationExtras, Router } from '@angular/router';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -13,88 +10,98 @@ import { AlertController, ToastController } from '@ionic/angular';
 export class Tab2Page {
 
   constructor(public router: Router,
-                    public alertController: AlertController,
-                    public toastController: ToastController) {}
+    public alertController: AlertController,
+    public toastController: ToastController) {}
 
-  listaSeries: ICartaz[] = [
-    {
-      nome: 'Cavaleiro da Lua (2022)',
-      lancamento: '30/03/2022',
-      duracao: '47m/Ep',
-      classificacao: 8,
-      cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tkc7AVyUoG9VEeDvukN0TVqa24C.jpg',
-      generos: ['Action & Adventure', 'Sci-Fi & Fantasy', 'Mistério'],
-      pagina: '/cavaleiro-lua',
-      favorito: false
-    },
-    {
-      nome: 'Halo (2022)',
-      lancamento: '24/03/2022 (BR)',
-      duracao: '1h/Ep',
-      classificacao: 8,
-      cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/eO0QV5qJaEngP1Ax9w3eV6bJG2f.jpg',
-      generos: ['Action & Adventure', 'Sci-Fi & Fantasy'],
-      pagina: '/halo',
-      favorito: false
-    },
-    {
-      nome: 'Chaves (1973)',
-      lancamento: '1973 (MEX)',
-      duracao: '23m/Ep',
-      classificacao: 7,
-      cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8D8rR5UgZlhLZ5k3cnMNTtYA8Wn.jpg',
-      generos: ['Comédia', 'Família'],
-      pagina: '/chaves',
-      favorito: false
-    },
-    {
-      nome: 'Arcane (2021)',
-      lancamento: '06/11/2021',
-      duracao: '39m/Ep',
-      classificacao: 9,
-      cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ohGz4HDYGTite1GmRhRuBMVAn03.jpg',
-      generos: ['Animação', 'Crime'],
-      pagina: '/arcane',
-      favorito: false
-    }
-  ];
+// eslint-disable-next-line @typescript-eslint/member-ordering
+listaSeries: ISeries[] = [
+{
+nome: 'Pretty Little Liars (2010)',
+lancamento: '08/06/2010',
+duracao: '7 Temporadas',
+classificacao: 9,
+cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lntOFDrvVPBAULcrE8NoUlExa11.jpg',
+generos: ['Drama', 'Suspense', 'Fantasia'],
+pagina: '/PLL',
+favorito: true
+},
+{
+nome: 'The Vampire Diaries (2009)',
+lancamento: '10/09/2009',
+duracao: '8 Temporadas',
+classificacao: 6,
+cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lcGQaSrWkkxGuh0JJqyN2TkuNqb.jpg',
+generos: ['Drama sobrenatural', 'Horror', 'Romance'],
+pagina: '/TVD',
+favorito: false
+},
+{
+nome: 'Friends (1994)',
+lancamento: '22/09/1994',
+duracao:'10 Temporadas',
+classificacao: 9,
+cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/f496cm9enuEsZkSPzCwnTESEK5s.jpg',
+generos:['Sitcom'],
+pagina:'/friends',
+favorito: false
+},
+{
+nome: 'Brooklyn Nine-Nine(2013)',
+lancamento: '17/09/2013',
+duracao:'8 Temporadas',
+classificacao: 6,
+cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/f496cm9enuEsZkSPzCwnTESEK5s.jpg',
+generos:['Comédia','Sitcom', 'Policial'],
+pagina:'/B99',
+favorito: false
+},
+{
+nome: 'Stranger Things (2016)',
+lancamento: '15/07/2016',
+duracao:'4 Temporadas',
+classificacao: 9,
+cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/49WJfeN0moxb9IPfGn8AIqMGskD.jpg',
+generos:['Drama Adolescente','Ficcção Cientifica', 'Terror', 'Suspense'],
+pagina:'/stranger-things',
+favorito: false
+}
+];
+exibirFilme(filme: ISeries){
+const navigationExtras: NavigationExtras = {state:{paramFilme:filme}};
+this.router.navigate(['filme-detalhe'],navigationExtras);
+}
 
+async exibirAlertaFavorito(filme: ISeries) {
+const alert = await this.alertController.create({
 
-  exibirFilme(filme: ICartaz){
-    const navigationExtras: NavigationExtras = {state:{paramFilme:filme}};
-    this.router.navigate(['filme-detalhe'],navigationExtras);
-  }
+header: 'Meus Favoritos',
+message: 'Deseja realmente favoritar o filme?',
+buttons: [
+{
+text: 'Não',
+role: 'cancel',
+handler: () => {
+filme.favorito=false;
+}
+}, {
+text: 'Sim, favoritar.',
+handler: () => {
+filme.favorito=true;
+this.apresentarToast();
+}
+}
+]
+});
+await alert.present();
+}
 
-  async exibirAlertaFavorito(filme: ICartaz) {
-    const alert = await this.alertController.create({
-
-      header: 'Meus Favoritos',
-      message: 'Deseja realmente favoritar o filme?',
-      buttons: [
-        {
-          text: 'Não',
-          role: 'cancel',
-          handler: () => {
-            filme.classificacao--;
-          }
-        }, {
-          text: 'Sim, favoritar.',
-          handler: () => {
-            filme.classificacao++;
-            this.apresentarToast();
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
-  async apresentarToast() {
-    const toast = await this.toastController.create({
-      message: 'Filme adicionado aos favoritos...',
-      duration: 2000,
-      color: 'success',
-      position: 'top'
-    });
-    toast.present();
-  }
+async apresentarToast() {
+const toast = await this.toastController.create({
+message: 'Filme adicionado aos favoritos...',
+duration: 2000,
+color: 'success',
+position: 'top'
+});
+toast.present();
+}
 }
