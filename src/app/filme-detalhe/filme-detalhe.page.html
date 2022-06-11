@@ -14,6 +14,7 @@
       <ion-icon *ngIf="!filme.cartaz" name="videocam-off"></ion-icon>
     </ion-card-header>
 
+
     <ion-card-content>
       <h1>{{filme.nome}} <ion-icon name="star" [color]="filme.favorito===true ? 'warning' : ('light')"></ion-icon></h1>
       <p>{{filme.lancamento}}
@@ -22,9 +23,13 @@
           <ion-label>{{filme.classificacao}}</ion-label>
         </ion-chip>
       </p>
+      <p>{{filme.descricao}}</p>
     </ion-card-content>
+
+
     <ion-item>
       <ion-badge color="medium" *ngFor="let genero of filme.generos">{{genero}}</ion-badge>
     </ion-item>
   </ion-card>
 </ion-content>
+
